@@ -1,0 +1,40 @@
+<%= form_with(model: [:dashboard, task], local: true) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this dashboard_task from being saved:</h2>
+
+      <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control', required: 'required',
+    placeholder: 'Digite o nome', autocomplete: 'off', id: :task_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control', required: 'required',
+    placeholder: 'Digite a descrição', id: :task_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.check_box :status, id: :task_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tags %>
+    <%= form.text_field :tags, class: 'form-control', required: 'required',
+    placeholder: 'Digite as tags', autocomplete: 'off',  id: :task_tags %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit nil, class: 'btn btn-primary btn-lg top' %>
+  </div>
+<% end %>
