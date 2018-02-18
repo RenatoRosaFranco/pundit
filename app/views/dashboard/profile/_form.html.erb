@@ -1,0 +1,42 @@
+<%= form_for([:dashboard, @profile], {url: dashboard_profile_path, method: :put}) do |form| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='field'>
+    <%= form.label :email %><br>
+    <%= form.email_field :email, class: 'form-control', required: 'required',
+    placeholder: 'Digite o e-mail', autocomplete: 'off', id: :user_email %>
+  </div>
+
+  <div class='field'>
+    <%= form.label :password %><br>
+    <%= form.password_field :password, class: 'form-control', required: 'required',
+    placeholder: 'Digite a senha', autocomplete: 'off' %>
+  </div>
+
+  <div class='field'>
+    <%= form.label :password_confirmation %><br>
+    <%= form.password_field :password_confirmation, class: 'form-control', required: 'required',
+    placeholder: 'Confirme a senha', autocomplete: 'off' %>
+  </div>
+  
+  <% if @profile.admin? %>
+  <div class='field'>
+    <%= form.label :admin %><br>
+    <%= form.check_box :admin %>
+  </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit nil, class: 'btn btn-primary btn-lg top' %>
+  </div>
+<% end %>

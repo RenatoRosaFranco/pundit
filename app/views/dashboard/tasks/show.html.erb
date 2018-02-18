@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+
+ <ul class='breadcrumb'>
+    <li><%= link_to 'Home',  dashboard_path %></li>
+    <li><%= link_to 'Tasks', dashboard_tasks_path %></li>
+    <li><%= link_to @task.name, dashboard_tasks_path(@task) %></li>
+ </ul>
+
+
 <p>
   <strong>Name:</strong>
   <%= @task.name %>
@@ -12,7 +20,7 @@
 
 <p>
   <strong>Status:</strong>
-  <%= @task.status %>
+  <span class='badge'><%= situation(@task) %></span>
 </p>
 
 <p>
@@ -20,5 +28,10 @@
   <%= @task.tags %>
 </p>
 
-<%= link_to 'Edit', edit_dashboard_task_path(@task) %> |
-<%= link_to 'Back', dashboard_tasks_path %>
+<p>
+  <strong>Associado:</strong><br />
+  <%= link_to @task.user.email %>
+</p>
+
+<%= link_to 'Edit', edit_dashboard_task_path(@task), class: 'btn btn-primary btn-lg top' %> |
+<%= link_to 'Back', dashboard_tasks_path, class: 'btn btn-default btn-lg top' %>

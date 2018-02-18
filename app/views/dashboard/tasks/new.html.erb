@@ -1,3 +1,10 @@
+
+ <ul class='breadcrumb'>
+    <li><%= link_to 'Home',  dashboard_path %></li>
+    <li><%= link_to 'Tasks', dashboard_tasks_path %></li>
+ 	<li><%= link_to 'Add Taks', new_dashboard_task_path %></li>
+</ul>
+
 <h1>New Dashboard Task</h1>
 
 <%= render 'form', task: @task %>

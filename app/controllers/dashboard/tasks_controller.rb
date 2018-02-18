@@ -1,10 +1,19 @@
-class Dashboard::TasksController < ApplicationController
+class Dashboard::TasksController < Dashboard::HomeController   
+  # Pundit 
+  rescue_from Pundit::NotAuthorizedError, with: :not_authorized
+
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   respond_to :html, :js, :json
 
   def index
-    @tasks = Task.all
-    respond_with(@tasks)
+    if (current_user.admin? == true)
+      @tasks = Task.all.recent
+       .page(params[:page]).per(2)
+    else
+      @tasks = current_user.tasks.recent
+       .page(params[:page]).per(2) 
+      respond_with(@tasks)
+    end
   end
 
   def show
@@ -27,16 +36,26 @@ class Dashboard::TasksController < ApplicationController
   end
 
   def update
+    authorize @task, :update?
     @task.update(task_params)
     respond_with(:dashboard, @task)
   end
 
   def destroy
+    authorize @task, :destroy?
     @task.destroy
     respond_with(:dashboard, @task)
   end
 
+  def search
+
+  end
+
   private
+    def not_authorized
+      redirec_to dashboard_path, notice: 'Not authorized'
+    end
+
     def set_task
       @task = Task.find(params[:id])
     end

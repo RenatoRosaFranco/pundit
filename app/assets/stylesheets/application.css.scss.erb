@@ -10,6 +10,24 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require toastr
  *= require_tree .
  *= require_self
  */
+ @import 'bootstrap';
+ @import 'bootstrap-sprockets';
+ 
+ .padding {
+  position: relative;
+  padding: 10px;
+ }
+ .top {
+  position: relative;
+  margin-top: 10px;
+ }
+ .avatar { 
+  width: 150px; 
+  height: 150px; 
+  background-color: #EEE !important; 
+  border-radius: 150px;  
+ }

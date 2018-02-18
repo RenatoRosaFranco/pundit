@@ -51,6 +51,18 @@ group :development, :test do
   gem 'pundit'
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'toastr-rails'
+  gem 'ransack'
+
+  gem 'rubocop'
+  gem 'simplecov'
+  gem 'rails_best_practices'
+  gem 'brakeman'
+
+  gem 'ffaker'
+  gem 'factory_bot'
+  gem 'kaminari'
+  gem 'bootstrap-kaminari-views'
 end
 
 group :development do
