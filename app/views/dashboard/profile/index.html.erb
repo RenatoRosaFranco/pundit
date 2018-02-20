@@ -66,6 +66,12 @@
 		</div>
 	</div>
 	<div class='field'>
+	  <div class='panel panel-default padding'>
+	  	<label>Role: </label>:<br>
+	  	<span class='badge'><%= @user.access %></span>
+	  </div>
+	</div>
+	<div class='field'>
 	 <div class='panel panel-default padding'>	
 		 <strong>E-mail:</strong>
 		 <p><%= link_to @user.email %></p>

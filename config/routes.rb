@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+  require 'sidekiq/web'
   
   # Application
   # @implemented 
@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   # @implemented
   namespace :dashboard do
     get '', to: 'home#index'
-  	resources :tasks 
+  	resources :tasks do 
+       resources :comments, only: [:create, :destroy]
+    end
     resources :profile, only: [:index, :show, :edit, :update]
   end
 
@@ -23,6 +25,10 @@ Rails.application.routes.draw do
     namespace :v1 do 
     end
   end
-  
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # Sidekiq => only admin
+  # @implemented
+  authenticate :user, lambda { |user| user.admin? } do 
+     mount Sidekiq::Web => '/sidekiq'
+  end 
 end

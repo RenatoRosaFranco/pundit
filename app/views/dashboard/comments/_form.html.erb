@@ -1,0 +1,9 @@
+<%= form_for([:dashboard, @task, Comment.new]) do |f| %>
+	<div class='field'>
+		<%= f.text_area :body, class: 'form-control', required: 'required',
+		placeholder: "Comentar #{@task.name}", autocomplete: 'off' %>
+	</div>
+	<div class='field'>
+		<%= f.submit nil, class: 'btn btn-primary btn-lg top' %>
+	</div>
+<% end %>

@@ -7,10 +7,12 @@ class Task < ApplicationRecord
   # Relationships
   # @implemented
   belongs_to :user
+  has_many :comments, dependent: :destroy
 
   # Scopes
   # @implemented
   scope :recent,  -> { order(created_at: :desc) }
+  scope :lasts,   -> { order(created_at: :asc) }
   scope :by_user, ->(user) { where(user: user) } 
   scope :completed, -> { where(status: true) }
   scope :uncompleted, -> { where(status: false) }

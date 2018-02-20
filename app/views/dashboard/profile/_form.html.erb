@@ -13,20 +13,29 @@
 
   <div class='field'>
     <%= form.label :email %><br>
+    <div class='input-group'>
+    <div class='input-group-addon'><i class='glyphicon glyphicon-search'></i></div>
     <%= form.email_field :email, class: 'form-control', required: 'required',
     placeholder: 'Digite o e-mail', autocomplete: 'off', id: :user_email %>
+    </div>
   </div>
 
   <div class='field'>
     <%= form.label :password %><br>
+    <div class='input-group'>
+    <div class='input-group-addon'><i class='glyphicon glyphicon-search'></i></div>
     <%= form.password_field :password, class: 'form-control', required: 'required',
     placeholder: 'Digite a senha', autocomplete: 'off' %>
+    </div>
   </div>
 
   <div class='field'>
     <%= form.label :password_confirmation %><br>
+    <div class='input-group'>
+    <div class='input-group-addon'><i class='glyphicon glyphicon-search'></i></div>
     <%= form.password_field :password_confirmation, class: 'form-control', required: 'required',
     placeholder: 'Confirme a senha', autocomplete: 'off' %>
+    </div>
   </div>
   
   <% if @profile.admin? %>

@@ -7,31 +7,42 @@
     <li><%= link_to @task.name, dashboard_tasks_path(@task) %></li>
  </ul>
 
+ <p>
+   <strong>Name:</strong>
+   <%= @task.name %>
+ </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @task.name %>
-</p>
+ <p>
+   <strong>Description:</strong>
+   <%= @task.description %>
+ </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @task.description %>
-</p>
+ <p>
+   <strong>Status:</strong>
+   <span class='badge'><%= situation(@task) %></span>
+ </p>
 
-<p>
-  <strong>Status:</strong>
-  <span class='badge'><%= situation(@task) %></span>
-</p>
+ <p>
+   <strong>Tags:</strong>
+   <%= @task.tags %>
+ </p>
 
-<p>
-  <strong>Tags:</strong>
-  <%= @task.tags %>
-</p>
+ <p>
+   <strong>Associado:</strong><br />
+   <%= link_to @task.user.email %>  
+ </p>
 
-<p>
-  <strong>Associado:</strong><br />
-  <%= link_to @task.user.email %>
-</p>
+ <p>
+   <strong>Comentar</strong>
+   <%= render partial: 'dashboard/comments/form', task: @task %>
+ </p>
 
-<%= link_to 'Edit', edit_dashboard_task_path(@task), class: 'btn btn-primary btn-lg top' %> |
-<%= link_to 'Back', dashboard_tasks_path, class: 'btn btn-default btn-lg top' %>
+ <p>
+   <h4>Comments <span class='badge'><%= @comments.count %></span></h4>
+   <%= render @comments %>
+   <%= has_records?(@comments) %>
+   <%= pagination(@comments) %>
+ </p>
+ 
+ <%= link_to 'Edit', edit_dashboard_task_path(@task), class: 'btn btn-primary btn-lg top' %> |
+ <%= link_to 'Back', dashboard_tasks_path, class: 'btn btn-default btn-lg top' %>

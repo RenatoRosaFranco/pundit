@@ -8,10 +8,10 @@ class Dashboard::TasksController < Dashboard::HomeController
   def index
     if (current_user.admin? == true)
       @tasks = Task.all.recent
-       .page(params[:page]).per(2)
+       .page(params[:page]).per(7)
     else
       @tasks = current_user.tasks.recent
-       .page(params[:page]).per(2) 
+       .page(params[:page]).per(7) 
       respond_with(@tasks)
     end
   end
@@ -48,16 +48,18 @@ class Dashboard::TasksController < Dashboard::HomeController
   end
 
   def search
-
+    # some code to be implemented here
   end
 
   private
     def not_authorized
-      redirec_to dashboard_path, notice: 'Not authorized'
+      redirect_to dashboard_path, notice: 'Not authorized'
     end
 
     def set_task
       @task = Task.find(params[:id])
+      @comments = @task.comments.recent
+       .page(params[:page]).per(2)
     end
 
     def task_params

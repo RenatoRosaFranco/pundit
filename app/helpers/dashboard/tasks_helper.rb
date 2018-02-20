@@ -10,6 +10,6 @@ module Dashboard::TasksHelper
 	end	
 
 	def owner(task)
-		" --#{task.user.email}"
+		" -- #{task.user.name}"
 	end
 end

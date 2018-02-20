@@ -5,8 +5,8 @@
     <li><%= link_to 'Tasks', dashboard_tasks_path %></li>
  </ul>
 
-<%= link_to 'New Dashboard Task', new_dashboard_task_path, 
-class: 'btn btn-primary btn-lg top pull-right' %>
+<%= button_to 'New Task', new_dashboard_task_path, 
+class: 'btn btn-primary btn-lg top pull-right', method: :get %>
 
 <h1><i class='glyphicon glyphicon-search'></i> 
 Dashboard Tasks</h1>

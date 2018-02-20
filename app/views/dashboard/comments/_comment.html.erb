@@ -1,0 +1,11 @@
+<div class='col-md-12'>
+	<div class='panel panel-12 padding'>
+		 <h4><%= link_to comment.user.name, dashboard_profile_path(comment.user) %></h4>
+		 <%= comment.body %>
+		 <h6><%= link_to comment.user.email %></h6>
+		 <b><%= time_ago_in_words(comment.created_at) %></b><br>
+		 <% if policy(comment).destroy? %>
+		 	<%= link_to 'Delete', dashboard_task_comment_path(@task, comment) %>
+		 <% end %>
+	</div>
+</div>

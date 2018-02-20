@@ -59,6 +59,9 @@ group :development, :test do
   gem 'rails_best_practices'
   gem 'brakeman'
 
+  gem 'sidekiq'
+  gem 'delayed_job'
+
   gem 'ffaker'
   gem 'factory_bot'
   gem 'kaminari'

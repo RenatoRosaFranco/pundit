@@ -5,6 +5,6 @@ class UserPolicy < ApplicationPolicy
   end
 
   def admin?
-  	@user.admin? || @profile.id == @user.id
+  	@user.admin? 
   end
 end
