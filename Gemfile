@@ -42,29 +42,50 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'devise'
-  gem 'responders'
-  gem 'rspec-rails'
-  gem 'bootstrap-sass'
-  gem 'jquery-rails'
-  gem 'better_errors'
-  gem 'pundit'
-  gem 'pry-rails'
-  gem 'pry-byebug'
-  gem 'toastr-rails'
-  gem 'ransack'
 
+  # Use devise as authentication
+  gem 'devise'
+  # Use responders as respond format
+  gem 'responders'
+  # Use rspec-rails as test framework
+  gem 'rspec-rails'
+  # Use bootstrap sass as bootstrap
+  gem 'bootstrap-sass'
+  # Use jquery-rails as jquery
+  gem 'jquery-rails'
+  # Use better_errors as error log
+  gem 'better_errors'
+  # Use pundit as authorization
+  gem 'pundit'
+  # Use pry as terminal
+  gem 'pry-rails'
+  # Use pry-byebug as debbuger
+  gem 'pry-byebug'
+  # Use toast-rails as visual alerts
+  gem 'toastr-rails'
+  # Use ransack to object based search
+  gem 'ransack'
+ # Use rubocop to code quality
   gem 'rubocop'
+  # Use simplecov to code coverage
   gem 'simplecov'
+  # Use rails_best_practices as best_practices
   gem 'rails_best_practices'
+  # Use brakeman as system vulnerabilities
   gem 'brakeman'
 
+  # Use sidekiq as background-jobs
   gem 'sidekiq'
+  # Use delayed_job as cron jobs
   gem 'delayed_job'
 
+  # Use faker to generate fake data
   gem 'ffaker'
+  # Use factory bot as data factory
   gem 'factory_bot'
+  # Use kaminari as pagination
   gem 'kaminari'
+  # Use bootstrap-kaminari-views to bootstrap style
   gem 'bootstrap-kaminari-views'
 end
 
